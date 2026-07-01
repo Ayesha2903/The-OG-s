@@ -1,5 +1,6 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { WishlistProvider } from "@/context/WishlistContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,10 +20,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-    lang="en"
-    className={`${inter.variable} ${playfair.variable}`}
-  >
-      <body>{children}</body>
+      lang="en"
+      className={`${inter.variable} ${playfair.variable}`}
+    >
+      <body>
+        <WishlistProvider>
+          {children}
+        </WishlistProvider>
+      </body>
     </html>
   );
 }

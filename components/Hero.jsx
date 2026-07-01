@@ -8,6 +8,7 @@ export default function Hero() {
     const slides=[
         {
         image:"/heroimages/hero1.png",
+        mobile: "/heroimages/hero1m.png",
         tag:"THE OGS",
         title:"Elevate Your Style",
         subtitle:"Premium footwear and luxury watches curated for those who appreciate timeless style.",
@@ -17,6 +18,7 @@ export default function Hero() {
         
         {
         image:"/heroimages/hero2.png",
+        mobile: "/heroimages/hero2m.png",
         tag:"LUXURY WATCHES",
         title:"Timeless Precision",
         subtitle:"Discover premium watches crafted to elevate every moment.",
@@ -26,6 +28,7 @@ export default function Hero() {
         
         {
         image:"/heroimages/hero3.png",
+        mobile: "/heroimages/hero3m.png",
         tag:"NEW ARRIVALS",
         title:"Just Dropped",
         subtitle:"Fresh arrivals selected to redefine your everyday wardrobe.",
@@ -35,6 +38,7 @@ export default function Hero() {
         
         {
         image:"/heroimages/hero4.png",
+        mobile: "/heroimages/hero4m.png",
         tag:"BEST SELLERS",
         title:"Customer Favorites",
         subtitle:"The styles loved most by our community.",
@@ -44,6 +48,7 @@ export default function Hero() {
         
         {
         image:"/heroimages/hero5.png",
+        mobile: "/heroimages/hero5m.png",
         tag:"PREMIUM COLLECTION",
         title:"Luxury Redefined",
         subtitle:"A curated collection of timeless pieces made to stand out.",
@@ -82,7 +87,7 @@ export default function Hero() {
         
 
     return (
-      <section {...handlers} className="relative h-[85vh] w-full overflow-hidden">
+      <section {...handlers} className="relative h-[75vh] md:h-[85vh] w-full overflow-hidden">
   
         {/* Background Image */}
         <AnimatePresence>
@@ -94,13 +99,25 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="absolute inset-0 z-0"
         >
-            <Image
+            <>
+        {/* Desktop */}
+        <Image
             src={slides[currentSlide].image}
             alt="Hero Banner"
             fill
             priority
-            className="object-cover scale-100 animate-kenburns"
-            />
+            className="hidden md:block object-cover"
+        />
+
+        {/* Mobile */}
+        <Image
+            src={slides[currentSlide].mobile}
+            alt="Hero Banner"
+            fill
+            priority
+            className="block md:hidden object-cover"
+        />
+        </>
         </motion.div>
         </AnimatePresence>
   
@@ -118,26 +135,26 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -25 }}
             transition={{ duration: 0.6 }}
-            className="absolute left-28 max-w-xl flex flex-col"
+            className="absolute left-6 right-6 md:left-28 md:right-auto top-1/2 -translate-y-1/2 max-w-sm md:max-w-xl flex flex-col"
             >
 
             {/* Tag */}
-            <p className="mb-6 text-sm font-medium uppercase tracking-[0.45em] text-[#C9A96E]">
+            <p className="mb-6 text-xs md:text-sm font-medium uppercase tracking-[0.45em] text-[#C9A96E]">
                 {slides[currentSlide].tag}
             </p>
 
             {/* Heading */}
-            <h1 className="font-playfair text-6xl font-bold leading-[1.02] tracking-tight text-white">
+            <h1 className="hidden md:block font-playfair text-6xl font-bold leading-[1.02] tracking-tight text-white">
                 {slides[currentSlide].title}
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-8 max-w-md text-xl leading-9 text-gray-300">
+            <p className="hidden md:block mt-8 max-w-md text-xl leading-9 text-gray-300">
                 {slides[currentSlide].subtitle}
             </p>
 
             {/* Buttons */}
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-8 md:mt-12 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
 
                 <button className="rounded-full border border-white/70 px-12 py-5 text-lg font-semibold text-white transition-all duration-300 hover:border-[#C9A96E] hover:text-[#C9A96E]">
                 {slides[currentSlide].primary}

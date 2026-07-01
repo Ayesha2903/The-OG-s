@@ -14,6 +14,9 @@ body {
   font-family: var(--font-inter);
 }
 
+.scrollbar-hide::-webkit-scrollbar{display:none}.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none;}
+
+
 .announcement-track{display:inline-flex;align-items:center;flex-shrink:0;min-width:100%;height:100%;animation:marquee 22s linear infinite;color:#0B0B0B;font-weight:500;letter-spacing:.08em;text-transform:uppercase;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-100%);}}
 
@@ -23,3 +26,9 @@ body {
   }
   
   .animate-kenburns { animation: kenburns 5s linear forwards; }
+
+/* Category carousel animations */
+@keyframes marqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqueeRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.animate-marquee-left{animation:marqueeLeft 110s linear infinite;}
+.animate-marquee-right{animation:marqueeRight 110s linear infinite;}
